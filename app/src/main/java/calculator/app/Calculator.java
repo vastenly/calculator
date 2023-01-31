@@ -47,7 +47,7 @@ class Calculator {
         int result = performOperation(num1, num2, operation);
 
 // check if result is valid
-        if (result < 1) {
+        if (result < 1 && isRomanNumeral(arr[0])) {
             throw new IllegalArgumentException(ExceptionMessage.RESULT_SHOULD_BE_MORE_THAN_ZERO.message);
         }
         if (isRomanNumeral(arr[0])) {
@@ -89,11 +89,10 @@ class Calculator {
         String[] C = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
         String[] X = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
         String[] I = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-        String sb = String.valueOf(M[num / 1000]) +
+        return M[num / 1000] +
                 C[(num % 1000) / 100] +
                 X[(num % 100) / 10] +
                 I[num % 10];
-        return sb;
     }
 
     private static boolean isRomanNumeral(String str) {
