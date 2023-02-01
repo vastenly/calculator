@@ -11,14 +11,12 @@ class CalculatorTest {
     @ParameterizedTest
     @MethodSource("calculator.app.CalculatorDataProvider#provideInputWithResult")
     void testGetMessage(String input, String testResult) {
-
-        String result = "";
          try {
-             result = Calculator.calc(input);
+             String result = Calculator.calc(input);
              System.out.println(result);
+             assertEquals(testResult, result);
          } catch (IllegalArgumentException e) {
              System.out.println(e.getMessage());
          }
-         assertEquals(testResult, result);
      }
 }
